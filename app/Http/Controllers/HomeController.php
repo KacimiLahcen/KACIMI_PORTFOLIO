@@ -1,0 +1,63 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Category;
+use App\Models\Portfolio;
+use App\Models\Qualification;
+use App\Models\Review;
+use App\Models\Service;
+use App\Models\Setting;
+use App\Models\Skill;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+
+    public function __invoke(Request $request)
+    {
+        $user = User::select(
+            'id',
+            'name',
+            'email',
+            'phone',
+            'address',
+            'job',
+            'profile_pic',
+            'role',
+            'experience'
+        )->where('id', 1)->first();
+
+        $experiences = Qualification::where('type', ['Work'])->orderBy('id', 'desc')->take(3)->get();
+        $educations = Qualification::where('type', ['Education'])->orderBy('id', 'desc')->take(3)->get();
+
+        $skills = Skill::orderBy('id', 'desc')->get();
+        $services = Service::take(6)->get();
+        $categories = Category::all();
+        $reviewers = Review::orderBy('id', 'desc')->take(5)->get();
+        $projectCount = Portfolio::count();
+        $activeCategory = $request->integer('category');
+        $portfolios = Portfolio::with('category')
+            ->when($activeCategory, fn ($query) => $query->where('cat_id', $activeCategory))
+            ->orderBy('id', 'desc')
+            ->paginate(6)
+            ->withQueryString()
+            ->fragment('portfolio');
+        $setting = Setting::first();
+
+        return view('home', compact(
+            'user',
+            'experiences',
+            'educations',
+            'skills',
+            'services',
+            'categories',
+            'portfolios',
+            'projectCount',
+            'activeCategory',
+            'setting',
+            'reviewers'
+        ));
+    }
+}
