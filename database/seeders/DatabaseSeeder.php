@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
         ]);
         // \App\Models\User::factory(1)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Profile User',
+        \App\Models\User::create([
+            'name' => 'Kacimi Lahcen',
             'email' => 'kacimi.lahcen88@gmail.com',
-            'password' => Hash::make('kacimixlahcen88.'),
+            'password' => bcrypt('kacimixlahcen88.'),
         ]);
     }
 }
