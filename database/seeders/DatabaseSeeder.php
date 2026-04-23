@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Kacimi Lahcen',
             'email' => 'kacimi.lahcen88@gmail.com',
             'password' => bcrypt('kacimixlahcen88.'),
+            'is_admin' => true,
         ]);
     }
 }
