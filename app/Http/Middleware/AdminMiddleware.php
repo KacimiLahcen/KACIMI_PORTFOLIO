@@ -15,13 +15,22 @@ class AdminMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
+    // public function handle(Request $request, Closure $next)
+    // {
+    //     if (Auth::check() && Auth::user()->is_admin) {
+    //         return $next($request);
+    //     } else {
+    //         abort(403, 'Unauthorized action.');
+    //     }
+
+    // }
+
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->is_admin) {
-            return $next($request);
-        } else {
+        if (!auth()->check() || !auth()->user()?->is_admin) {
             abort(403, 'Unauthorized action.');
         }
-        
+
+        return $next($request);
     }
 }
