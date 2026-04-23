@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\Setting::create([
-            'about_title' => 'Software Engineer',
-            'about_description' => 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.',
-            'fb_url' => 'https://www.facebook.com/yasser.elgammal/',
-            'github_url' => 'https://github.com/YasserElgammal',
-            'linkedin_url' => 'https://www.linkedin.com/in/elgammal/',
+            'about_title' => 'Full Stack Developer',
+            'about_description' => 'Développeur Junior Full stack en formation à YouCode, avec une expérience pratique issue de stages en développement web. Compétences techniques solides, bon niveau d’anglais et niveau intermédiaire en français.',
+            'fb_url' => 'https://www.facebook.com/',
+            'github_url' => 'https://github.com/KacimiLahcen',
+            'linkedin_url' => 'www.linkedin.com/in/kacimi-lahcen',
             'freelance_url' => '#li',
             'cv_url' => '#cv',
             'video_url' => '#video'
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Profile User',
             'email' => 'kacimi.lahcen88@gmail.com',
-            'password' => Hash::make('kacimixlahcen88'),
+            'password' => Hash::make('kacimixlahcen88.'),
         ]);
     }
 }
