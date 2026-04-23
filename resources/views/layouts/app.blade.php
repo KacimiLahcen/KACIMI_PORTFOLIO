@@ -25,8 +25,8 @@
     <link href="{{ asset('import/assets/lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <!-- <link href="{{ asset('import/assets/css/style.css') }}" rel="stylesheet"> -->
-    <link href="/import/assets/css/style.css" rel="stylesheet">
+    <link href="{{ asset('import/assets/css/style.css') }}" rel="stylesheet">
+    <!-- <link href="/import/assets/css/style.css" rel="stylesheet"> -->
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
